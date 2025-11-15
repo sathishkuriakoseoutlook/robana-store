@@ -21,19 +21,27 @@ module.exports = defineConfig({
     backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL || "http://localhost:9000",
   },
     // Configure Medusa modules to use Redis for event bus and cache
+  
   modules: {
     eventBus: {
       resolve: "@medusajs/event-bus-redis",
       options: {
         // package expects a connection/url to Redis
-        connection: process.env.REDIS_URL || "redis://127.0.0.1:6379",
+        redisUrl: process.env.REDIS_URL,
       },
     },
     cacheService: {
       resolve: "@medusajs/cache-redis",
       options: {
-        url: process.env.REDIS_URL || "redis://127.0.0.1:6379",
+        redisUrl: process.env.REDIS_URL,
       },
     },
+    workflowService: {
+      resolve: "@medusajs/workflow-engine-redis",
+      options: {
+        redisUrl: process.env.REDIS_URL,
+      },
+    },    
   },
+  
 })
