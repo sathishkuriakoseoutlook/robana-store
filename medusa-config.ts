@@ -22,8 +22,8 @@ module.exports = defineConfig({
   },
     // Configure Medusa modules to use Redis for event bus and cache
   
-  modules: [
-    //eventBus: 
+  modules: {
+    eventBus: 
     {
       resolve: "@medusajs/event-bus-redis",
       options: {
@@ -31,14 +31,14 @@ module.exports = defineConfig({
         redisUrl: process.env.REDIS_URL,
       },
     },
-    //cacheService: 
+    cacheService: 
     {
       resolve: "@medusajs/cache-redis",
       options: {
         redisUrl: process.env.REDIS_URL,
       },
     },
-    //workflowService: 
+    workflowService: 
     {
       resolve: "@medusajs/workflow-engine-redis",
       options: {
@@ -47,6 +47,6 @@ module.exports = defineConfig({
        },
       },
     },    
-  ],
+  },
   
 })
