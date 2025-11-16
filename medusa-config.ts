@@ -18,31 +18,35 @@ module.exports = defineConfig({
   },
   admin: { 
     disable: process.env.DISABLE_MEDUSA_ADMIN === 'true',
-    backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL || "https://robana-store-production.up.railway.app:9000",
+    backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL || "http://localhost:9000",
   },
     // Configure Medusa modules to use Redis for event bus and cache
   
-  modules: {
-    eventBus: {
+  modules: [
+    //eventBus: 
+    {
       resolve: "@medusajs/event-bus-redis",
       options: {
         // package expects a connection/url to Redis
         redisUrl: process.env.REDIS_URL,
       },
     },
-    cacheService: {
+    //cacheService: 
+    {
       resolve: "@medusajs/cache-redis",
       options: {
         redisUrl: process.env.REDIS_URL,
       },
     },
-    workflowService: {
+    //workflowService: 
+    {
       resolve: "@medusajs/workflow-engine-redis",
       options: {
-        redisUrl: process.env.REDIS_URL,
-        prefix: "medusa_workflow",
+        redis: {
+        url: process.env.REDIS_URL,
+       },
       },
     },    
-  },
+  ],
   
 })
