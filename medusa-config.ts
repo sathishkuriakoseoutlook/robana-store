@@ -36,12 +36,13 @@ module.exports = defineConfig({
         redisUrl: process.env.REDIS_URL,
       },
     },
-    /* workflowService: {
+    workflowService: {
       resolve: "@medusajs/workflow-engine-redis",
       options: {
         redisUrl: process.env.REDIS_URL,
+        prefix: "medusa_workflow",
       },
-    },   */ 
+    },    
   },
   
 })
