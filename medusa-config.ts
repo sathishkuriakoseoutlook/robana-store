@@ -18,7 +18,7 @@ module.exports = defineConfig({
   },
   admin: { 
     disable: process.env.DISABLE_MEDUSA_ADMIN === 'true',
-    backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL || "https://robana-store-production.up.railway.app:9000",
+    backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL || "https://robana-store-production.up.railway.app",
   },
     // Configure Medusa modules to use Redis for event bus and cache
   
